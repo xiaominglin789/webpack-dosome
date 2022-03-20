@@ -1,0 +1,35 @@
+{
+  // 文件保存时自动格式化
+  "editor.formatOnSave": true,
+  // 编辑器的字体大小
+  "editor.fontSize": 22,
+  // tab = 4 个空格
+  "editor.tabSize": 4,
+  // 配置vue文件默认使用 esbenp.prettier-vscode 格式化
+  "[vue]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  // 在快速修复菜单中显示open lint rule documentation网页。
+  "eslint.codeAction.showDocumentation": {
+    "enable": true
+  },
+  // eslint
+  "eslint.enable": true,
+  "eslint.options": {
+    //指定vscode的eslint所处理的文件的后缀
+    "extensions": [
+      ".js",
+      ".ts",
+      ".tsx"
+    ]
+  },
+  "eslint.validate": [
+    "javascript",
+    "typescript",
+    "typescriptreact"
+  ],
+  // 文件导航
+  "breadcrumbs.enabled": true,
+  // 有时候markdown文件会被prettier格式化,需要配置进过滤文件
+  "prettier.ignorePath": ".prettierignore"
+}
