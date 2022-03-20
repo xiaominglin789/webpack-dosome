@@ -1,7 +1,6 @@
 # webpack4 学习
-
+目标: webpack配置的探索, 产出一份通用的webpack.config.js的用于生产的工程化配置（webpack4版本）
 ![webpack](https://img2018.cnblogs.com/blog/1306384/201810/1306384-20181028215850562-752614317.png)
-
 - what?
   模块打包器
 - why?
@@ -9,10 +8,10 @@
 - how?
   - webpack + webpack-cli + webpack.config.js
 
+
+
 ## 环境搭建: 安装 webpack 和 webpack-cli
-
 webpack4 = webpack 内核 + webpack-cli 脚手架
-
 ```bash
 # 项目初始化
 # 创建空目录 和 package.json
@@ -22,10 +21,10 @@ pnpm init -y
 pnpm install webpack@4.31.0 webpack-cli@3.3.2 --save-dev
 ```
 
+
+
 ## 体验 webpack 打包的简单例子
-
 - 1.创建 `webpack.config.js`, 编写配置
-
 ```markdown
 'use strict';
 
@@ -42,7 +41,6 @@ mode: 'production'
 ```
 
 - 2.创建 `src/index.js` 和 `src/helloworld.js`
-
 ```markdown
 # src/index.js
 
@@ -58,7 +56,6 @@ return 'hello world';
 ```
 
 - 3.执行指令打包: `./node_modules/.bin/webpack`
-
 ```bash
 >./node_modules/.bin/webpack
 Hash: b2d5c02cc4267a47ed66
@@ -76,7 +73,6 @@ Entrypoint main = bundle.js
 ```
 
 - 4.配置 `script` 命令, 替代繁琐的手动输入指令
-
 ```json
 {
   "name": "webpack-some",
@@ -97,10 +93,10 @@ Entrypoint main = bundle.js
 }
 ```
 
+
+
 ## webpack 基础
-
 - 1.`entry`: 依赖图的入口
-
 ```javascript
 // 单入口的写法(SPA), entry是一个字符串
 mpdule.exports = {
@@ -119,7 +115,6 @@ module.exports = {
 - 2.`output`: 指定`webpack`打包后输出的位置目录
   - filename： 输出的文件名
   - path: 输出的文件路径
-
 ```javascript
 // 单入口的output
 module.exports = {
@@ -181,8 +176,7 @@ module.exports = {
 ```
 
 - 4.plugins
-  插件用于 bundle 文件的优化, 如: 资源管理, 环境变量注入。作用于 整个构建过程。如 每次构建时,需要手动删除旧的文件
-
+插件用于 bundle 文件的优化, 如: 资源管理, 环境变量注入。作用于 整个构建过程。如 每次构建时,需要手动删除旧的文件
 常见的 plugins 有以下这些:
 | 名称 | 描述 |
 | ---- | ---- |
@@ -219,14 +213,14 @@ module.exports = {
 | production | 开启 FlagDependencyUsagePlugin, FlagIncludedChunksPlugin, ModuleConcatenationPlugin, NoEmitOnErrorsPlugin, OccurenceOrderPlugin, SideEffectsFlogPlugin 和 TerserPlugin |
 | none | 不开启任何优化选项 |
 
+
+
+
+
 ## webpack 解析 ES6 和 React JSX
-
 ### webpack 解析 ES6
-
 webpack 默认可以解析 es5 的,但是 es6+ 需要使用`babel-loader`进行转换:es5
-
 - 1.指定 js 代码解析规则
-
 ```javascript
 const path = require("path");
 
@@ -248,7 +242,6 @@ module.exports = {
 ```
 
 - 2.babel 的配置文件: `.babelrc`, 增加 es6
-
 ```
 {
 	"presets": [
@@ -266,8 +259,9 @@ module.exports = {
 
 安装 es6 对应的依赖: + @babel/core -> babel 核心 + @babel/preset-env -> es6-preset + babel/loader -> loader 解析 es6
 
-### webpack 解析 React JSX
 
+
+### webpack 解析 React JSX
 让 webpack 支持解析 React JSX
 
 ```
